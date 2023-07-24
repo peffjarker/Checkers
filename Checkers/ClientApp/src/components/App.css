@@ -1,0 +1,47 @@
+﻿.board {
+    margin-left: 33%;
+}
+
+.backdrop {
+    background-color: goldenrod;
+    height: 100%
+}
+
+.user-circle {
+    display: flex;
+    width: 25px;
+    height: 25px;
+    background-color: goldenrod;
+    border-radius: 50%;
+    margin-top: 33%
+}
+
+.cpu-circle {
+    display: flex;
+    width: 25px;
+    height: 25px;
+    background-color: white;
+    border-radius: 50%;
+    margin-top: 33%
+}
+
+.text {
+    margin: auto;
+}
+
+.row {
+    display: flex;
+}
+
+.box {
+    width:50px;
+    height: 50px;
+}
+
+.black {
+    background-color: saddlebrown;
+}
+
+.white {
+    background-color: tan;
+}
