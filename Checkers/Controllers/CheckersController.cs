@@ -1,14 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
-using System.Text.Json;
-using System.Text.Json.Serialization;
+using Nancy.Json;
 
 namespace Checkers.Controllers
 {
 
     public class CheckerBoard
     {
-        private int[] Board = new int[64] 
+        private int[] Board = new int[64]
             {
                 -1, 2, -1, 2, -1, 2, -1, 2,
                 2, -1, 2, -1, 2, -1, 2, -1,
@@ -21,7 +19,7 @@ namespace Checkers.Controllers
             };
 
 
-        private int lastMove = -1;
+    private int lastMove = -1;
 
         public int[] CheckerBoardData
         {
@@ -34,7 +32,7 @@ namespace Checkers.Controllers
     [Route("[controller]")]
     public class CheckersController : ControllerBase
     {
-        public CheckerBoard Board = new CheckerBoard();
+        public CheckerBoard Board = new();
 
 
         [HttpGet("getboard")]
@@ -42,11 +40,19 @@ namespace Checkers.Controllers
         {
             return Board.CheckerBoardData;
         }
-
+        
         [HttpPost("postboard")]
-        public void Post(int[] newBoard)
+        public void Post([FromBody]int[] newBoard)
         {
+            JavaScriptSerializer js = new JavaScriptSerializer();
             Board.CheckerBoardData = newBoard;
+            Console.WriteLine(Board.CheckerBoardData[0].ToString());
+        }
+
+        [HttpPut("movecount")]
+        public void Put()
+        {
+
         }
     }
 }

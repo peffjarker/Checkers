@@ -39,17 +39,26 @@ export default function Checkers() {
         chessBoard[0][0] = 1;
 
         const arr1d = [].concat(...chessBoard);
- 
+
+
+        const jsonArray = JSON.stringify(arr1d);
+
         
         const requestOptions = {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(arr1d),
+            headers: { "Content-Type": "application/json" },
+            body: jsonArray,
         };
+        console.log(jsonArray);
         console.log(arr1d);
         fetch('checkers/postboard', requestOptions)
-            .then(response => response.json())
-            .then(data => console.log(data));
+            .then(response => {
+                fetchChessBoard();
+                console.log(response);
+            })
+            //.then(data => {
+            //    console.log(data);
+            //});
         console.log(chessBoard)
     }
 
